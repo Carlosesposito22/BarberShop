@@ -1,1 +1,10 @@
-<p>card-header works!</p>
+<mat-card appearence="outlined" class="card-title">
+    <mat-card-header class="title-center">
+        <div class="title">
+            <mat-card-title><ng-content></ng-content></mat-card-title>
+        </div>
+        <div class="menu">
+            <app-menu-bar></app-menu-bar>
+        </div>
+    </mat-card-header>
+</mat-card>

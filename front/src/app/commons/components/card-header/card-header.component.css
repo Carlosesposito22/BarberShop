@@ -1,0 +1,23 @@
+.title-center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+
+.mat-mdc-card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-title {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.title {
+    z-index: 1;
+    text-align: center;
+}
