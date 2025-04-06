@@ -1,6 +1,13 @@
 package br.com.dio.barbershopui.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -29,27 +36,24 @@ public class ScheduleEntity {
     @Column(nullable = false, name = "start_at")
     private OffsetDateTime startAt;
 
-    @Column(nullable = false, name = "ent_at")
+    @Column(nullable = false, name = "end_at")
     private OffsetDateTime endAt;
 
     @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private ClientEntity clientEntity = new ClientEntity();
+    private ClientEntity client = new ClientEntity();
 
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ScheduleEntity that = (ScheduleEntity) o;
-        return Objects.equals(id, that.id) && Objects.equals(startAt, that.startAt) && Objects.equals(endAt, that.endAt);
+    public boolean equals(final Object o) {
+        if (!(o instanceof ScheduleEntity that)) return false;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(startAt, that.startAt) &&
+                Objects.equals(endAt, that.endAt);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hashCode(id);
-        result = 31 * result + Objects.hashCode(startAt);
-        result = 31 * result + Objects.hashCode(endAt);
-        return result;
+        return Objects.hash(id, startAt, endAt);
     }
 }
