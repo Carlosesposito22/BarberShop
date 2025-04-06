@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 public record SaveClientRequest(
         @NotNull
-        @JsonProperty("names")
+        @JsonProperty("name")
         String name,
         @NotNull
         @JsonProperty("email")
